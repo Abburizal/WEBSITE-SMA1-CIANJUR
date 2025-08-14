@@ -19,8 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Start session and include dependencies
 session_start();
-require_once 'db.php';
-require_once 'csrf_token.php';
+require_once __DIR__ . '/../config/app_config.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/csrf_token.php';
 
 try {
     // Get database connection

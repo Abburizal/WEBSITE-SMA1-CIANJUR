@@ -1,0 +1,54 @@
+# PHP
+*.log
+*.tmp
+temp/
+cache/
+
+# Database credentials (if storing separately)
+# config/db_production.php
+
+# Composer
+vendor/
+composer.phar
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Error logs
+error.log
+error_log
+php_error.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Upload directories (if any)
+uploads/
+user_uploads/
+
+# Cache directories
+cache/
+tmp/
+
+# Environment files
+.env
+.env.local
+.env.production

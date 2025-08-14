@@ -1,7 +1,7 @@
 <?php
 // Test database connection
 try {
-    include 'php/db.php';
+    include __DIR__ . '/../config/db.php';
     $pdo = getDatabaseConnection();
     echo "Database connection successful!" . PHP_EOL;
     
