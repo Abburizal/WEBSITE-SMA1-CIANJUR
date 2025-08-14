@@ -1,0 +1,7 @@
+{
+    "name": "user/website-smanegri-1-cianjur",
+    "description": "Proyek website SMAN 1 Cianjur dengan PHP dan MySQL.",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
