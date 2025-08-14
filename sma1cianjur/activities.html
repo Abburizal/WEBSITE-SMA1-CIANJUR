@@ -3,22 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Kegiatan dan ekstrakurikuler SMA Negeri 1 Cianjur">
   <title>Kegiatan - SMA Negeri 1 Cianjur</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 <body>
   <header class="site-header bg-red">
-    <nav class="navbar navbar-expand-lg navbar-dark container">
+    <nav class="navbar navbar-expand-lg navbar-dark container" aria-label="Navigasi utama">
       <a class="navbar-brand" href="index.html">SMA Negeri 1 Cianjur</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Tampilkan menu navigasi">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">Tentang Kami</a></li>
-          <li class="nav-item"><a class="nav-link active" href="activities.html">Kegiatan</a></li>
+          <li class="nav-item"><a class="nav-link active" href="activities.html" aria-current="page">Kegiatan</a></li>
           <li class="nav-item"><a class="nav-link" href="news.html">Berita</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
         </ul>
@@ -27,54 +38,73 @@
   </header>
 
   <main class="container my-5">
-    <h1>Kegiatan</h1>
-    <p class="mb-4">Daftar kegiatan sekolah .</p>
+    <section class="page-header text-center mb-5" aria-labelledby="activities-title">
+      <h1 id="activities-title">Kegiatan Sekolah</h1>
+      <p class="lead">Berbagai kegiatan menarik yang mengembangkan potensi siswa di SMA Negeri 1 Cianjur.</p>
+    </section>
 
-    <div class="row" id="kegiatan-list">
-      <!-- Dummy cards -->
-      <div class="col-md-4 mb-3">
-        <div class="card card-hover">
-          <img src="assets/images/kegiatan1.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Lomba 17 Agustus</h5>
-            <p class="card-text">Serangkaian lomba tradisional memperingati kemerdekaan.</p>
-            <p class="text-muted small">Tanggal: 2025-08-17</p>
-          </div>
+    <section class="activities-grid" aria-label="Daftar kegiatan">
+      <div class="row g-4" id="kegiatan-list">
+        <div class="col-lg-4 col-md-6">
+          <article class="activity-card card card-hover">
+            <img src="assets/images/kegiatan1.jpg" class="card-img-top" alt="Lomba 17 Agustus" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Lomba 17 Agustus</h5>
+              <p class="card-text">Serangkaian lomba tradisional memperingati kemerdekaan Indonesia dengan berbagai kompetisi menarik.</p>
+              <div class="activity-meta">
+                <span class="activity-date">
+                  <i class="icon-calendar" aria-hidden="true"></i>
+                  17 Agustus 2025
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <article class="activity-card card card-hover">
+            <img src="assets/images/kegiatan2.jpg" class="card-img-top" alt="Pentas Seni" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Pentas Seni</h5>
+              <p class="card-text">Acara seni tahunan menampilkan kreativitas siswa dalam tari, musik, drama, dan seni pertunjukan lainnya.</p>
+              <div class="activity-meta">
+                <span class="activity-date">
+                  <i class="icon-calendar" aria-hidden="true"></i>
+                  5 Juli 2025
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <article class="activity-card card card-hover">
+            <img src="assets/images/kegiatan3.jpg" class="card-img-top" alt="Study Tour Bandung" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Study Tour Bandung</h5>
+              <p class="card-text">Kunjungan edukatif ke berbagai tempat bersejarah dan ilmiah di Bandung untuk pembelajaran di luar kelas.</p>
+              <div class="activity-meta">
+                <span class="activity-date">
+                  <i class="icon-calendar" aria-hidden="true"></i>
+                  12 Juni 2025
+                </span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-
-      <div class="col-md-4 mb-3">
-        <div class="card card-hover">
-          <img src="assets/images/kegiatan2.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Pentas Seni</h5>
-            <p class="card-text">Acara seni tahunan menampilkan tari, musik, dan drama.</p>
-            <p class="text-muted small">Tanggal: 2025-07-05</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-3">
-        <div class="card card-hover">
-          <img src="assets/images/kegiatan3.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Study Tour Bandung</h5>
-            <p class="card-text">Kunjungan edukatif ke berbagai tempat di Bandung.</p>
-            <p class="text-muted small">Tanggal: 2025-06-12</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    </section>
   </main>
 
-  <footer class="bg-light py-4 mt-5">
+  <footer class="bg-light py-4 mt-5" role="contentinfo">
     <div class="container text-center">
-      <p class="mb-0">&copy; 2025 SMA Negeri 1 Cianjur</p>
+      <p class="mb-0">&copy; 2025 SMA Negeri 1 Cianjur — All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
   <script src="js/script.js"></script>
 </body>
 </html>

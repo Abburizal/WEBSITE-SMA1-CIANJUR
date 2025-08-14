@@ -3,15 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Berita terbaru dan informasi penting dari SMA Negeri 1 Cianjur">
   <title>Berita - SMA Negeri 1 Cianjur</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 <body>
   <header class="site-header bg-red">
-    <nav class="navbar navbar-expand-lg navbar-dark container">
+    <nav class="navbar navbar-expand-lg navbar-dark container" aria-label="Navigasi utama">
       <a class="navbar-brand" href="index.html">SMA Negeri 1 Cianjur</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Tampilkan menu navigasi">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
@@ -19,7 +30,7 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">Tentang Kami</a></li>
           <li class="nav-item"><a class="nav-link" href="activities.html">Kegiatan</a></li>
-          <li class="nav-item"><a class="nav-link active" href="news.html">Berita</a></li>
+          <li class="nav-item"><a class="nav-link active" href="news.html" aria-current="page">Berita</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
         </ul>
       </div>
@@ -27,44 +38,62 @@
   </header>
 
   <main class="container my-5">
-    <h1>Berita</h1>
-    <p class="mb-4">Berita terbaru dari SMA Negeri 1 Cianjur.</p>
+    <section class="page-header text-center mb-5" aria-labelledby="news-title">
+      <h1 id="news-title">Berita Terbaru</h1>
+      <p class="lead">Informasi dan perkembangan terkini dari SMA Negeri 1 Cianjur.</p>
+    </section>
 
-    <div class="list-group">
-      <a class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">SMA 1 Cianjur Juara Olimpiade Matematika</h5>
-          <small>2025-05-20</small>
+    <section class="news-container" aria-label="Daftar berita">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="news-list">
+            <article class="news-item">
+              <div class="news-content">
+                <div class="news-header">
+                  <h3 class="news-title">SMA 1 Cianjur Juara Olimpiade Matematika</h3>
+                  <time class="news-date" datetime="2025-05-20">20 Mei 2025</time>
+                </div>
+                <p class="news-excerpt">Tim olimpiade matematika berhasil meraih juara 1 pada kompetisi regional. Prestasi membanggakan ini menunjukkan kualitas pendidikan di sekolah kami.</p>
+                <a href="#" class="news-link" aria-label="Baca selengkapnya tentang juara olimpiade matematika">Baca Selengkapnya</a>
+              </div>
+            </article>
+
+            <article class="news-item">
+              <div class="news-content">
+                <div class="news-header">
+                  <h3 class="news-title">Peresmian Gedung Baru</h3>
+                  <time class="news-date" datetime="2025-04-10">10 April 2025</time>
+                </div>
+                <p class="news-excerpt">Sekolah meresmikan gedung belajar baru untuk mendukung kegiatan akademik. Fasilitas modern ini akan meningkatkan kualitas pembelajaran.</p>
+                <a href="#" class="news-link" aria-label="Baca selengkapnya tentang peresmian gedung baru">Baca Selengkapnya</a>
+              </div>
+            </article>
+
+            <article class="news-item">
+              <div class="news-content">
+                <div class="news-header">
+                  <h3 class="news-title">SMA 1 Cianjur Adakan Donor Darah</h3>
+                  <time class="news-date" datetime="2025-03-15">15 Maret 2025</time>
+                </div>
+                <p class="news-excerpt">Kegiatan donor darah bekerja sama dengan PMI setempat. Partisipasi aktif siswa dan guru menunjukkan kepedulian sosial yang tinggi.</p>
+                <a href="#" class="news-link" aria-label="Baca selengkapnya tentang kegiatan donor darah">Baca Selengkapnya</a>
+              </div>
+            </article>
+          </div>
         </div>
-        <p class="mb-1">Tim olimpiade matematika berhasil meraih juara 1 pada kompetisi regional.</p>
-      </a>
-
-      <a class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Peresmian Gedung Baru</h5>
-          <small>2025-04-10</small>
-        </div>
-        <p class="mb-1">Sekolah meresmikan gedung belajar baru untuk mendukung kegiatan akademik.</p>
-      </a>
-
-      <a class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">SMA 1 Cianjur Adakan Donor Darah</h5>
-          <small>2025-03-15</small>
-        </div>
-        <p class="mb-1">Kegiatan donor darah bekerja sama dengan PMI setempat.</p>
-      </a>
-    </div>
-
+      </div>
+    </section>
   </main>
 
-  <footer class="bg-light py-4 mt-5">
+  <footer class="bg-light py-4 mt-5" role="contentinfo">
     <div class="container text-center">
-      <p class="mb-0">&copy; 2025 SMA Negeri 1 Cianjur</p>
+      <p class="mb-0">&copy; 2025 SMA Negeri 1 Cianjur — All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
   <script src="js/script.js"></script>
 </body>
 </html>

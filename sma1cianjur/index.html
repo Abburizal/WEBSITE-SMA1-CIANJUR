@@ -3,20 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SMA Negeri 1 Cianjur - Sekolah unggulan dengan pendidikan karakter dan prestasi">
   <title>SMA Negeri 1 Cianjur - Beranda</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 <body>
   <header class="site-header bg-red">
-    <nav class="navbar navbar-expand-lg navbar-dark container">
+    <nav class="navbar navbar-expand-lg navbar-dark container" aria-label="Navigasi utama">
       <a class="navbar-brand" href="index.html">SMA Negeri 1 Cianjur</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Tampilkan menu navigasi">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html" aria-current="page">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">Tentang Kami</a></li>
           <li class="nav-item"><a class="nav-link" href="activities.html">Kegiatan</a></li>
           <li class="nav-item"><a class="nav-link" href="news.html">Berita</a></li>
@@ -27,39 +38,39 @@
   </header>
 
   <main class="container my-5">
-    <section class="hero text-center">
-      <h1>Selamat datang di SMA Negeri 1 Cianjur</h1>
+    <section class="hero text-center" aria-labelledby="hero-title">
+      <h1 id="hero-title">Selamat datang di SMA Negeri 1 Cianjur</h1>
       <p class="lead">Membangun generasi unggul melalui pendidikan karakter dan prestasi.</p>
-      <img src="assets/images/sma-placeholder.jpg" alt="SMA" class="img-fluid rounded shadow-sm hero-img">
+      <img src="assets/images/sma-placeholder.jpg" alt="Gedung SMA Negeri 1 Cianjur" class="img-fluid rounded shadow-sm hero-img" aria-label="Foto SMA Negeri 1 Cianjur">
     </section>
 
-    <section class="mt-5">
-      <h2 class="mb-3">Kegiatan Terbaru</h2>
+    <section class="mt-5" aria-labelledby="kegiatan-title">
+      <h2 id="kegiatan-title" class="mb-3">Kegiatan Terbaru</h2>
       <div id="activities-preview" class="row">
         <!-- cards akan dimuat dari activities.html atau database -->
         <div class="col-md-4 mb-3">
           <div class="card card-hover">
-            <img src="assets/images/kegiatan1.jpg" class="card-img-top" alt="">
+            <img src="assets/images/kegiatan1.jpg" class="card-img-top" alt="Pentas Seni Sekolah" aria-label="Foto Pentas Seni">
             <div class="card-body">
               <h5 class="card-title">Pentas Seni Sekolah</h5>
               <p class="card-text">Tampilkan kreativitas siswa dalam seni dan budaya.</p>
-              <a href="activities.html" class="btn btn-outline-danger btn-sm">Lihat Kegiatan</a>
+              <a href="activities.html" class="btn btn-outline-danger btn-sm" aria-label="Lihat detail kegiatan Pentas Seni">Lihat Kegiatan</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mt-5">
-      <h2 class="mb-3">Berita Terbaru</h2>
+    <section class="mt-5" aria-labelledby="berita-title">
+      <h2 id="berita-title" class="mb-3">Berita Terbaru</h2>
       <div id="news-preview" class="row">
         <div class="col-md-6 mb-3">
           <div class="card card-hover">
-            <img src="assets/images/berita1.jpg" class="card-img-top" alt="">
+            <img src="assets/images/berita1.jpg" class="card-img-top" alt="SMA 1 Cianjur Juara Olimpiade Matematika" aria-label="Foto Juara Olimpiade Matematika">
             <div class="card-body">
               <h5 class="card-title">SMA 1 Cianjur Juara Olimpiade Matematika</h5>
               <p class="card-text">Prestasi membanggakan dari tim matematika sekolah.</p>
-              <a href="news.html" class="btn btn-outline-danger btn-sm">Baca Berita</a>
+              <a href="news.html" class="btn btn-outline-danger btn-sm" aria-label="Baca berita SMA 1 Cianjur Juara Olimpiade Matematika">Baca Berita</a>
             </div>
           </div>
         </div>
@@ -68,14 +79,17 @@
 
   </main>
 
-  <footer class="bg-light py-4 mt-5">
+  <footer class="bg-light py-4 mt-5" role="contentinfo">
     <div class="container text-center">
       <p class="mb-0">&copy; 2025 SMA Negeri 1 Cianjur — All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- jQuery (required for enhanced animations) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
   <script src="js/script.js"></script>
 </body>
 </html>
