@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Favicon</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32" style="width: 320px; height: 320px; border: 1px solid #ccc;"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Create a simple favicon for SMA 1 Cianjur
+        // Background
+        ctx.fillStyle = '#dc2626'; // Red background
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // White text "S1"
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 16px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('S1', 16, 16);
+        
+        // Convert to data URL
+        const dataURL = canvas.toDataURL('image/png');
+        
+        // Create download link
+        const link = document.createElement('a');
+        link.download = 'favicon.png';
+        link.href = dataURL;
+        link.textContent = 'Download Favicon';
+        link.style.display = 'block';
+        link.style.marginTop = '20px';
+        link.style.fontSize = '18px';
+        
+        document.body.appendChild(link);
+        
+        // Auto click to download
+        setTimeout(() => {
+            link.click();
+        }, 1000);
+    </script>
+</body>
+</html>

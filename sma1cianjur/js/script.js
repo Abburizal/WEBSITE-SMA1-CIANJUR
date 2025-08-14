@@ -1,5 +1,37 @@
 // Enhanced JavaScript with modern UI/UX interactions
 $(function(){
+  // Generate CSRF token for security
+  function generateCSRFToken() {
+    const timestamp = Date.now().toString();
+    const randomBytes = Array.from(crypto.getRandomValues(new Uint8Array(16)));
+    const randomString = randomBytes.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    return btoa(timestamp + randomString).replace(/[+/=]/g, '');
+  }
+  
+  // Add CSRF token to contact form
+  if ($('#contactForm').length) {
+    const csrfToken = generateCSRFToken();
+    sessionStorage.setItem('csrf_token', csrfToken);
+    $('#contactForm').prepend('<input type="hidden" name="csrf_token" value="' + csrfToken + '">');
+    
+    // Add character counter for message field
+    $('#pesan').on('input', function() {
+      const currentLength = $(this).val().length;
+      const charCountElement = $('#char-count');
+      if (charCountElement.length) {
+        charCountElement.text(currentLength);
+        
+        if (currentLength > 900) {
+          charCountElement.addClass('text-warning').removeClass('text-danger');
+        } else if (currentLength >= 1000) {
+          charCountElement.addClass('text-danger').removeClass('text-warning');
+        } else {
+          charCountElement.removeClass('text-warning text-danger');
+        }
+      }
+    });
+  }
+  
   // Smooth scroll for anchor links
   $('a[href^="#"]').on('click', function(e) {
     e.preventDefault();
@@ -17,44 +49,92 @@ $(function(){
     var $form = $(this);
     var $submitBtn = $form.find('button[type="submit"]');
     var $result = $("#formResult");
-    var data = $form.serialize();
-
-    // Enhanced validation with better UX
+    
+    // Enhanced validation with better UX and security
     var email = $("#email").val().trim();
     var nama = $("#nama").val().trim();
     var pesan = $("#pesan").val().trim();
     var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var nameRe = /^[a-zA-Z\s\.]+$/;
+    
+    // Clear previous validation states
+    $form.find('.is-invalid').removeClass('is-invalid');
     
     // Clear previous results with fade out
     $result.fadeOut(200);
     
     setTimeout(function() {
-      if(!nama || !email || !pesan){
-        showAlert('warning', 'Semua field wajib diisi.', $result);
-        return;
+      var hasError = false;
+      
+      // Enhanced validation
+      if(!nama || nama.length < 2 || nama.length > 100) {
+        $('#nama').addClass('is-invalid');
+        showAlert('warning', 'Nama harus diisi dan antara 2-100 karakter.', $result);
+        hasError = true;
+      } else if(!nameRe.test(nama)) {
+        $('#nama').addClass('is-invalid');
+        showAlert('warning', 'Nama hanya boleh mengandung huruf, spasi, dan titik.', $result);
+        hasError = true;
       }
-      if(!emailRe.test(email)){
-        showAlert('warning', 'Format email tidak valid.', $result);
-        return;
+      
+      if(!email || !emailRe.test(email) || email.length > 100) {
+        $('#email').addClass('is-invalid');
+        showAlert('warning', 'Email tidak valid atau terlalu panjang.', $result);
+        hasError = true;
       }
+      
+      if(!pesan || pesan.length < 10 || pesan.length > 1000) {
+        $('#pesan').addClass('is-invalid');
+        showAlert('warning', 'Pesan harus diisi dan antara 10-1000 karakter.', $result);
+        hasError = true;
+      }
+      
+      if(hasError) return;
 
       // Show loading state
       $submitBtn.prop('disabled', true);
       $submitBtn.html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Mengirim...');
 
-      // Submit via AJAX with enhanced feedback
-      $.post($form.attr("action"), data, function(resp){
-        showAlert('success', resp || 'Pesan berhasil dikirim!', $result);
-        $form[0].reset();
-        
-        // Add success animation
-        $form.addClass('animate-success');
-        setTimeout(function() {
-          $form.removeClass('animate-success');
-        }, 1000);
-        
+      // Submit via AJAX with enhanced security and feedback
+      $.ajax({
+        url: $form.attr("action"),
+        type: "POST",
+        data: $form.serialize(),
+        dataType: 'json',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      }).done(function(response){
+        if (response.success) {
+          showAlert('success', response.message || 'Pesan berhasil dikirim!', $result);
+          $form[0].reset();
+          
+          // Reset character count
+          $('#char-count').text('0');
+          
+          // Generate new CSRF token
+          const newToken = generateCSRFToken();
+          sessionStorage.setItem('csrf_token', newToken);
+          $form.find('input[name="csrf_token"]').val(newToken);
+          
+          // Add success animation
+          $form.addClass('animate-success');
+          setTimeout(function() {
+            $form.removeClass('animate-success');
+          }, 1000);
+        } else {
+          showAlert('danger', response.message || 'Terjadi kesalahan. Silakan coba lagi.', $result);
+        }
       }).fail(function(xhr){
-        var msg = xhr.responseText || "Terjadi kesalahan. Silakan coba lagi.";
+        var msg = "Terjadi kesalahan. Silakan coba lagi.";
+        try {
+          var response = JSON.parse(xhr.responseText);
+          if (response.message) {
+            msg = response.message;
+          }
+        } catch(e) {
+          // Use default message
+        }
         showAlert('danger', msg, $result);
       }).always(function() {
         // Reset button state
